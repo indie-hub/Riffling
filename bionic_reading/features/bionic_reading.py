@@ -516,7 +516,16 @@ class BionicReading:
         highlighted_text = self.tokens_to_text(highlighted_tokens)
 
         return self.to_output_format(highlighted_text)
-
+    
+    def tokenize(
+        self,
+        text: str
+    ) -> List[str]:
+        tokens = self.split_text_to_words(text)
+        uncommon_words = self.get_rare_words(text)
+        highlighted_tokens = self.highlight_tokens(tokens, uncommon_words)
+               
+        return highlighted_tokens
 
 if __name__ == "__main__":
     _text = """
